@@ -52,5 +52,5 @@ uvicorn airpollution:app --port 8000 --reload
 - Download NODE-RED
 - Open NODE-RED and Import nodes via our NODE-RED flow (`DB.json`, `Dashboard.json`)
 - Deploy NODE-RED and open dashboard
-### More detail and demonstrฟtion
+### More details and demonstration
 - https://youtu.be/RHqnKUNZV3I
