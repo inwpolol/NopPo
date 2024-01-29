@@ -1,0 +1,507 @@
+[
+    {
+        "id": "80dabe6b897671db",
+        "type": "tab",
+        "label": "Project_DashBoard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7a7f87e9d8374cf5",
+        "type": "mysql",
+        "z": "80dabe6b897671db",
+        "mydb": "fe4da4f0747d8a7b",
+        "name": "PMCO_DB",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "6e4a663f0317827d"
+            ]
+        ]
+    },
+    {
+        "id": "88b8f66a285c6074",
+        "type": "inject",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM aqi;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "7a7f87e9d8374cf5"
+            ]
+        ]
+    },
+    {
+        "id": "be81b06a0042f6db",
+        "type": "debug",
+        "z": "80dabe6b897671db",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "6e4a663f0317827d",
+        "type": "change",
+        "z": "80dabe6b897671db",
+        "name": "PM2.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[-1].pm",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "be97d39d7646e16e",
+                "ca1b253ba24b3e48"
+            ]
+        ]
+    },
+    {
+        "id": "be97d39d7646e16e",
+        "type": "ui_gauge",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "aa76374bcb6c55b4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "PM2.5",
+        "label": "AQI",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 870,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ca21f7ca5ec7239a",
+        "type": "change",
+        "z": "80dabe6b897671db",
+        "name": "CO",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[-1].co",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            [
+                "255ca02e9c7a4899",
+                "67b4a058667e0bb9"
+            ]
+        ]
+    },
+    {
+        "id": "255ca02e9c7a4899",
+        "type": "ui_gauge",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "55a299e745583939",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "CO",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 830,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "13b7afc53d2ad8f7",
+        "type": "ui_gauge",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "fb35e95f7e1b7fde",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Traffic",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "efd7a08d198e9fa9",
+        "type": "change",
+        "z": "80dabe6b897671db",
+        "name": "Traffic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[-1].trafficind",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 440,
+        "wires": [
+            [
+                "13b7afc53d2ad8f7",
+                "5a277eeadca6e0d7"
+            ]
+        ]
+    },
+    {
+        "id": "5a277eeadca6e0d7",
+        "type": "ui_chart",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "fb35e95f7e1b7fde",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "TrafficIndex Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 850,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "67b4a058667e0bb9",
+        "type": "ui_chart",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "55a299e745583939",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "CO Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca1b253ba24b3e48",
+        "type": "ui_chart",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "group": "aa76374bcb6c55b4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "PM2.5 Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "500",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 890,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f5f999971040edc9",
+        "type": "inject",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM trafficindex ;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "b2c0092b187d942e"
+            ]
+        ]
+    },
+    {
+        "id": "1ba30b02e51e399d",
+        "type": "inject",
+        "z": "80dabe6b897671db",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM co_kidbright ;",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "0af7ec03fa8240fe"
+            ]
+        ]
+    },
+    {
+        "id": "0af7ec03fa8240fe",
+        "type": "mysql",
+        "z": "80dabe6b897671db",
+        "mydb": "fe4da4f0747d8a7b",
+        "name": "PMCO_DB",
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "ca21f7ca5ec7239a"
+            ]
+        ]
+    },
+    {
+        "id": "b2c0092b187d942e",
+        "type": "mysql",
+        "z": "80dabe6b897671db",
+        "mydb": "fe4da4f0747d8a7b",
+        "name": "PMCO_DB",
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "efd7a08d198e9fa9"
+            ]
+        ]
+    },
+    {
+        "id": "fe4da4f0747d8a7b",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot.cpe.ku.ac.th",
+        "port": "3306",
+        "db": "group11",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "aa76374bcb6c55b4",
+        "type": "ui_group",
+        "name": "PM2.5",
+        "tab": "5e311f687d2f67de",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "55a299e745583939",
+        "type": "ui_group",
+        "name": "CO",
+        "tab": "5e311f687d2f67de",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fb35e95f7e1b7fde",
+        "type": "ui_group",
+        "name": "TrafficIndex",
+        "tab": "5e311f687d2f67de",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5e311f687d2f67de",
+        "type": "ui_tab",
+        "name": "Project",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

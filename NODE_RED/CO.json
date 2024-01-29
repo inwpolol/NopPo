@@ -1,0 +1,21 @@
+[
+    {
+        "id": "aab36cb04c90dd61",
+        "type": "template",
+        "z": "e0e40228d2006bd1",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `co_kidbright` (`lat`, `lon`, `co`) \nVALUES (\n    {{payload.lat}},\n    {{payload.lon}},\n    {{payload.co}}\n)",
+        "output": "str",
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "13907a25b486d4f1"
+            ]
+        ]
+    }
+]

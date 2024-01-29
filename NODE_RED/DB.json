@@ -1,0 +1,384 @@
+[
+    {
+        "id": "7c25d025a31a485c",
+        "type": "tab",
+        "label": "Project_DB",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f30f2a1ce917044c",
+        "type": "inject",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "7be334f76bf9cce2"
+            ]
+        ]
+    },
+    {
+        "id": "7be334f76bf9cce2",
+        "type": "http request",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://traffic.longdo.com/api/json/traffic/index",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 510,
+        "y": 80,
+        "wires": [
+            [
+                "76dcfd98dba0a1f7"
+            ]
+        ]
+    },
+    {
+        "id": "4bdace0cb0e21888",
+        "type": "debug",
+        "z": "7c25d025a31a485c",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "74dc1031d8e9de89",
+        "type": "file",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "filename": "tmd-data",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 720,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "728b105f77d8dbf2",
+        "type": "file in",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "filename": "tmd-data",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 440,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "78dcbe31a1b2f636",
+        "type": "json",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 640,
+        "wires": [
+            [
+                "ba2a725cd82a09cf",
+                "d53925746095a333"
+            ]
+        ]
+    },
+    {
+        "id": "63b674ead9df5eb2",
+        "type": "inject",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 520,
+        "wires": [
+            [
+                "05acf5b06f5f6098"
+            ]
+        ]
+    },
+    {
+        "id": "05acf5b06f5f6098",
+        "type": "http request",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.waqi.info/feed/geo:13.71246;100.5828/?token=fee2e6e7379d6509830c797beea0c87a45756311",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 530,
+        "y": 520,
+        "wires": [
+            [
+                "78dcbe31a1b2f636"
+            ]
+        ]
+    },
+    {
+        "id": "ba2a725cd82a09cf",
+        "type": "debug",
+        "z": "7c25d025a31a485c",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f92b938f654825b8",
+        "type": "file",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "filename": "pm-2.5",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 820,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e37c3c9077350db8",
+        "type": "file in",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "filename": "pm-2.5",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 460,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3a70b58483cee90e",
+        "type": "inject",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 640,
+        "wires": [
+            [
+                "e37c3c9077350db8"
+            ]
+        ]
+    },
+    {
+        "id": "76dcfd98dba0a1f7",
+        "type": "json",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "4bdace0cb0e21888",
+                "2182d0101639215d"
+            ]
+        ]
+    },
+    {
+        "id": "2182d0101639215d",
+        "type": "template",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `trafficindex` (\n    `trafficind`, \n    `time`) \nVALUES (\n    {{payload.index}}, \n    {{payload.time}});",
+        "output": "str",
+        "x": 740,
+        "y": 360,
+        "wires": [
+            [
+                "b84149fa54f02146"
+            ]
+        ]
+    },
+    {
+        "id": "b84149fa54f02146",
+        "type": "mysql",
+        "z": "7c25d025a31a485c",
+        "mydb": "fe4da4f0747d8a7b",
+        "name": "PMCO_DB",
+        "x": 910,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc4554c34f5988b9",
+        "type": "mysql",
+        "z": "7c25d025a31a485c",
+        "mydb": "fe4da4f0747d8a7b",
+        "name": "PMCO_DB",
+        "x": 1010,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d53925746095a333",
+        "type": "template",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO `aqi` (\n    `pm`,\n    `lat`,  \n    `lon`) \nVALUES (\n    {{payload.data.aqi}},\n    {{payload.data.city.geo.0}},\n    {{payload.data.city.geo.1}});",
+        "output": "str",
+        "x": 780,
+        "y": 740,
+        "wires": [
+            [
+                "cc4554c34f5988b9"
+            ]
+        ]
+    },
+    {
+        "id": "86ca84dca55ffd67",
+        "type": "inject",
+        "z": "7c25d025a31a485c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "728b105f77d8dbf2"
+            ]
+        ]
+    },
+    {
+        "id": "fe4da4f0747d8a7b",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "iot.cpe.ku.ac.th",
+        "port": "3306",
+        "db": "group11",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
